@@ -133,11 +133,11 @@ You can declare Mytuner with 4 parameters (model, train dataset, validation data
 > *	train_set  : Train dataset from which to load the data. It will be Custom Dataset, created by inheriting torch.utils.data.dataset and overriding methods. torch.utils.data.Dataset is an abstract class that provides datasets in Pytorch.
 > *	val_set : Test dataset from which to load the data. It will be Custom Dataset, created by inheriting torch.utils.data.dataset and overriding methods. torch.utils.data.Dataset is an abstract class that provides datasets in Pytorch.
 > *	config : 
->> +	n_epochs([int,…]) : Number of epochs to try for each parameter combination
->> +	batch([int,…]) : List the batch sizes you want to try.
->> +	lr([float,float]) : Input learning rates’ range value in list. ex) [min,max]
->> +	momentum([float,…]) : List the various momentum value you want to try. (if the model has momentum parameters)
->> +	optimizer([optim.XXX,…]) : List the optimizers you want to try.
+>     +	n_epochs([int,…]) : Number of epochs to try for each parameter combination
+>     +	batch([int,…]) : List the batch sizes you want to try.
+>     +	lr([float,float]) : Input learning rates’ range value in list. ex) [min,max]
+>     +	momentum([float,…]) : List the various momentum value you want to try. (if the model has momentum parameters)
+>     +	optimizer([optim.XXX,…]) : List the optimizers you want to try.
 
 Then call start function in Mytuner with the number of hyperparameters combination trial. 
 Tuning, training and validation are all going in this process . We set the number of hyperparameters combination to 20, but you can use a different number.  
