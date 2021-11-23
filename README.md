@@ -7,33 +7,7 @@ We used a subset of Yoga-82 dataset: https://sites.google.com/view/yoga-82/
 
 The testset consists of 600 images and 6 classes:
 
-[balancing, inverted, reclining, sitting, standing, and wheel.]
-
-## Open Source SW Contribution
-> Subject: Deep Learning  
-> Subject ID: 13177001  
-> Professor Name: Jungchan Cho  
-> SW Developer(s): 김수현 이정준 윤호운 전수환  
-> Date: 04/03/2021 ~ 06/04/2021  
-
-**URL (Kaggle)**
-
-https://www.kaggle.com/kimsuhyeon01/team-h-problem1  
-
-
-**Target Library**  
-
-Pytorch  
-
-
-**Title (class/function name)**
-
-Mytuner(model,train_set,val_set,config)
-
-**Description**
-
-Hyperparameter tuning, such as choosing different learning rates or optimization methods, can often have a significant impact on model performance. We implement an automatic tuner ‘Mytuner’ class to help to find the best combination of parameters. We selected random search method to tune. Random Search can find the optimal hyperparameter value faster while drastically reducing the number of unnecessary iterations. You can declare Mytuner with 4 parameters (model, train dataset, validation dataset, config). Config is a dictionary form which contains hyperparameters to tune (number of epoch, batch size, learning rate, momentum, optimizer). Then call start function in Mytuner with the number of hyperparameters combination trial. Tuning, training and validation are all going in this process .
-
+[balancing, inverted, reclining, sitting, standing, and wheel.]  
 
 ## Tutorial
 
@@ -147,5 +121,29 @@ Load the test dataset and proceed with the test. Classification results are save
 
        
          
+    
+## Open Source SW Contribution
+> Subject: Deep Learning  
+> Subject ID: 13177001  
+> Professor Name: Jungchan Cho  
+> SW Developer(s): 김수현 이정준 윤호운 전수환  
+> Date: 04/03/2021 ~ 06/04/2021  
 
+**URL (Kaggle)**
+
+https://www.kaggle.com/kimsuhyeon01/team-h-problem1  
+
+
+**Target Library**  
+
+Pytorch  
+
+
+**Title (class/function name)**
+
+Mytuner(model,train_set,val_set,config)
+
+**Description**
+
+Hyperparameter tuning, such as choosing different learning rates or optimization methods, can often have a significant impact on model performance. We implement an automatic tuner ‘Mytuner’ class to help to find the best combination of parameters. We selected random search method to tune. Random Search can find the optimal hyperparameter value faster while drastically reducing the number of unnecessary iterations. You can declare Mytuner with 4 parameters (model, train dataset, validation dataset, config). Config is a dictionary form which contains hyperparameters to tune (number of epoch, batch size, learning rate, momentum, optimizer). Then call start function in Mytuner with the number of hyperparameters combination trial. Tuning, training and validation are all going in this process 
 
