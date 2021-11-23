@@ -3,7 +3,7 @@ Professor Jungchan Cho's Deep Learning Class (Spring, 2021) classification compe
 
 
 ## About this Competition
-We will use a subset of Yoga-82 dataset: https://sites.google.com/view/yoga-82/
+We used a subset of Yoga-82 dataset: https://sites.google.com/view/yoga-82/
 
 The testset consists of 600 images and 6 classes:
 
@@ -54,12 +54,16 @@ Pytorch provides useful tools such as torch.utils.data.Dataset and torch.utils.d
 
 ### Training and Test Function
 Define functions to train and test. Train function’s parameters are model, dataloader, optimizer, epoch. The epoch and optimizer values are setting by Mytuner class. Test function’s parameters are model which is trained by train function and dataloader. 
+  
 
 ### Load datasets and setting the model.
 We used the yoga posture dataset and the resnet18 model. You can get user’s input to choose pretrained or non-pretrained. If user wants non-pretrained model, they will input ‘False’.  
+  
 
 ### Improve the performance
 We attempt several methods to improve the performance of the model. A variety of other methods can be applied.
+  
+  
 #### Data Augmetation
 ```
 # Data augmentation --------------------------------------------
@@ -79,7 +83,7 @@ model.fc = nn.Sequential(nn.Linear(num_ftrs, 512), # attach trainable classifier
                                       nn.Linear(512, 6)) 
 
 ```
-Instead of immediately reducing the channels to 1024 to 6, we added a ReLU activation function and Dropout to increase the performance.
+Instead of immediately reducing the channels to 1024 to 6, we added a ReLU activation function and Dropout to increase the performance.  
 
 ### Hyperparameter tuning (Mytuner class)
 Mytuner will randomly select values from a list of hyperparameter values in the config dictionary to create a best combination. There are five hyperparameters we used for tuning: Epoch, Batch size, learning rate, momentum, and optimizer.    
@@ -97,12 +101,13 @@ config = {
 ```
 You can declare Mytuner with 4 parameters (model, train dataset, validation dataset, config).  
 Then call start function in Mytuner with the number of hyperparameters combination trial. 
-Tuning, training and validation are all going in this process . We set the number of hyperparameters combination to 20, but you can use a different number.
+Tuning, training and validation are all going in this process . We set the number of hyperparameters combination to 20, but you can use a different number.  
 
 ### Test 
 Load the test dataset and proceed with the test. Classification results are saved in the csv file format.
 
-
+       
+         
 
 ## Open Source SW Contribution
 > Subject: Deep Learning  
