@@ -9,6 +9,31 @@ The testset consists of 600 images and 6 classes:
 
 [balancing, inverted, reclining, sitting, standing, and wheel.]
 
+## Open Source SW Contribution
+> Subject: Deep Learning  
+> Subject ID: 13177001  
+> Professor Name: Jungchan Cho  
+> SW Developer(s): 김수현 이정준 윤호운 전수환  
+> Date: 04/03/2021 ~ 06/04/2021  
+
+**URL (Kaggle)**
+
+https://www.kaggle.com/kimsuhyeon01/team-h-problem1  
+
+
+**Target Library**  
+
+Pytorch  
+
+
+**Title (class/function name)**
+
+Mytuner(model,train_set,val_set,config)
+
+**Description**
+
+Hyperparameter tuning, such as choosing different learning rates or optimization methods, can often have a significant impact on model performance. We implement an automatic tuner ‘Mytuner’ class to help to find the best combination of parameters. We selected random search method to tune. Random Search can find the optimal hyperparameter value faster while drastically reducing the number of unnecessary iterations. You can declare Mytuner with 4 parameters (model, train dataset, validation dataset, config). Config is a dictionary form which contains hyperparameters to tune (number of epoch, batch size, learning rate, momentum, optimizer). Then call start function in Mytuner with the number of hyperparameters combination trial. Tuning, training and validation are all going in this process .
+
 
 ## Tutorial
 
@@ -85,10 +110,10 @@ model.fc = nn.Sequential(nn.Linear(num_ftrs, 512), # attach trainable classifier
 ```
 Instead of immediately reducing the channels to 1024 to 6, we added a ReLU activation function and Dropout to increase the performance.  
 
-### Hyperparameter tuning (Mytuner class)
-Mytuner will randomly select values from a list of hyperparameter values in the config dictionary to create a best combination. There are five hyperparameters we used for tuning: Epoch, Batch size, learning rate, momentum, and optimizer.    
+### Hyperparameter tuning (Mytuner class)  
+> Mytuner(model,train_set,val_set,config)    
 
-For each parameter, various candidate values are stored in the ‘config’ dictionary in the form of a list. Only ‘lr’ key values are range value([min,max]). You can organize the list with the values you want. 
+  Mytuner will randomly select values from a list of hyperparameter values in the config dictionary to create a best combination. There are five hyperparameters we used for tuning: Epoch, Batch size, learning rate, momentum, and optimizer.    For each parameter, various candidate values are stored in the ‘config’ dictionary in the form of a list. Only ‘lr’ key values are range value([min,max]). You can organize the list with the values you want. 
 
 ``` # Make the elements to be tuned into a dictionary form.
 config = { 
@@ -99,7 +124,21 @@ config = {
          'optimizer': [optim.RMSprop, optim.Adam]
          }
 ```
+
+  
 You can declare Mytuner with 4 parameters (model, train dataset, validation dataset, config).  
+  
+>  Parameters
+> *	model : Target model to use for learning.
+> *	train_set  : Train dataset from which to load the data. It will be Custom Dataset, created by inheriting torch.utils.data.dataset and overriding methods. torch.utils.data.Dataset is an abstract class that provides datasets in Pytorch.
+> *	val_set : Test dataset from which to load the data. It will be Custom Dataset, created by inheriting torch.utils.data.dataset and overriding methods. torch.utils.data.Dataset is an abstract class that provides datasets in Pytorch.
+> *	config : 
+>> +	n_epochs([int,…]) : Number of epochs to try for each parameter combination
+>> +	batch([int,…]) : List the batch sizes you want to try.
+>> +	lr([float,float]) : Input learning rates’ range value in list. ex) [min,max]
+>> +	momentum([float,…]) : List the various momentum value you want to try. (if the model has momentum parameters)
+>> +	optimizer([optim.XXX,…]) : List the optimizers you want to try.
+
 Then call start function in Mytuner with the number of hyperparameters combination trial. 
 Tuning, training and validation are all going in this process . We set the number of hyperparameters combination to 20, but you can use a different number.  
 
@@ -109,28 +148,4 @@ Load the test dataset and proceed with the test. Classification results are save
        
          
 
-## Open Source SW Contribution
-> Subject: Deep Learning  
-> Subject ID: 13177001  
-> Professor Name: Jungchan Cho  
-> SW Developer(s): 김수현 이정준 윤호운 전수환  
-> Date: 04/03/2021 ~ 06/04/2021  
-
-**URL (Kaggle)**
-
-https://www.kaggle.com/kimsuhyeon01/team-h-problem1  
-
-
-**Target Library**  
-
-Pytorch  
-Pytorch is an open source machine learning library based on Python, developed by the Facebook Artificial Intelligence Research Group. It is concise, quick to implement, and much easier for users to learn than tensorflow. It is also effective in explaining the code directly to others.  
-
-**Title (class/function name)**
-
-Mytuner(model,train_set,val_set,config)
-
-**Description**
-
-Hyperparameter tuning, such as choosing different learning rates or optimization methods, can often have a significant impact on model performance. We implement an automatic tuner ‘Mytuner’ class to help to find the best combination of parameters. We selected random search method to tune. Random Search can find the optimal hyperparameter value faster while drastically reducing the number of unnecessary iterations. You can declare Mytuner with 4 parameters (model, train dataset, validation dataset, config). Config is a dictionary form which contains hyperparameters to tune (number of epoch, batch size, learning rate, momentum, optimizer). Then call start function in Mytuner with the number of hyperparameters combination trial. Tuning, training and validation are all going in this process .
 
