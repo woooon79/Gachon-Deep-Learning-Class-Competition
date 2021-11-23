@@ -1,15 +1,9 @@
 # Gachon-Deep-Learning-Class-Competition
-Professor Jungchan Cho's Deep Learning Class (Spring, 2021) classification competition.
+Professor Jungchan Cho's Deep Learning Class (Spring, 2021) classification competition.  
+We used a subset of Yoga-82 dataset: https://sites.google.com/view/yoga-82/  
+The testset consists of 600 images and 6 classes: [balancing, inverted, reclining, sitting, standing, and wheel.]  
 
-
-## About this Competition
-We used a subset of Yoga-82 dataset: https://sites.google.com/view/yoga-82/
-
-The testset consists of 600 images and 6 classes:
-
-[balancing, inverted, reclining, sitting, standing, and wheel.]  
-
-## Tutorial
+# Tutorial
 
 
 To run this tutorial, please make sure the install and import following packages.
@@ -32,7 +26,7 @@ import random
 import pandas as pd
 ```
 
-### Initial setting
+## Initial setting
 Setting to use GPU and set various path to load datasets.
 
 ```
@@ -47,23 +41,23 @@ base_dir = '../input/'
 train_dir = os.path.join(base_dir, 'train-dataset')
 test_dir = os.path.join(base_dir,'test-dataset')
 ```
-### Custom Dataset
+## Custom Dataset
 Pytorch provides useful tools such as torch.utils.data.Dataset and torch.utils.data.DataLoader to make it easier to handle datasets.  This simplifies mini batch learning, data shuffle, and parallelism. The default usage is to define Dataset and forward it to the DataLoader. But you can create your own custom datasets by inheriting torch.utils.data.Dataset. torch.utils.data.Dataset is an abstract class that provides datasets in Pytorch. Inherit Dataset and override the following methods to create a custom dataset:
 
 
-### Training and Test Function
+## Training and Test Function
 Define functions to train and test. Train function’s parameters are model, dataloader, optimizer, epoch. The epoch and optimizer values are setting by Mytuner class. Test function’s parameters are model which is trained by train function and dataloader. 
   
 
-### Load datasets and setting the model.
+## Load datasets and setting the model.
 We used the yoga posture dataset and the resnet18 model. You can get user’s input to choose pretrained or non-pretrained. If user wants non-pretrained model, they will input ‘False’.  
   
 
-### Improve the performance
+## Improve the performance
 We attempt several methods to improve the performance of the model. A variety of other methods can be applied.
   
   
-#### Data Augmetation
+### Data Augmetation
 ```
 # Data augmentation --------------------------------------------
 transform = transforms.Compose([transforms.ToTensor(),  
@@ -73,7 +67,7 @@ transform = transforms.Compose([transforms.ToTensor(),
 
 Due to the characteristics of yoga posture, Random Vertical Flip was not used for data augmentation, but only Random Horizontal Flip was used.
 
-#### Modify fully-connected layer
+### Modify fully-connected layer
 ```
 # Transform the fully connected layer
 model.fc = nn.Sequential(nn.Linear(num_ftrs, 512), # attach trainable classifier
@@ -84,7 +78,7 @@ model.fc = nn.Sequential(nn.Linear(num_ftrs, 512), # attach trainable classifier
 ```
 Instead of immediately reducing the channels to 1024 to 6, we added a ReLU activation function and Dropout to increase the performance.  
 
-### Hyperparameter tuning (Mytuner class)  
+## Hyperparameter tuning (Mytuner class)  
 > Mytuner(model,train_set,val_set,config)    
 
   Mytuner will randomly select values from a list of hyperparameter values in the config dictionary to create a best combination. There are five hyperparameters we used for tuning: Epoch, Batch size, learning rate, momentum, and optimizer.    For each parameter, various candidate values are stored in the ‘config’ dictionary in the form of a list. Only ‘lr’ key values are range value([min,max]). You can organize the list with the values you want. 
@@ -116,13 +110,13 @@ You can declare Mytuner with 4 parameters (model, train dataset, validation data
 Then call start function in Mytuner with the number of hyperparameters combination trial. 
 Tuning, training and validation are all going in this process . We set the number of hyperparameters combination to 20, but you can use a different number.  
 
-### Test 
+## Test 
 Load the test dataset and proceed with the test. Classification results are saved in the csv file format.
 
        
          
     
-## Open Source SW Contribution
+# Open Source SW Contribution
 > Subject: Deep Learning  
 > Subject ID: 13177001  
 > Professor Name: Jungchan Cho  
