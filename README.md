@@ -57,7 +57,7 @@ We used the yoga posture dataset and the resnet18 model. You can get user’s in
 We attempt several methods to improve the performance of the model. A variety of other methods can be applied.
   
   
-### Data Augmetation
+### + Data Augmetation
 ```
 # Data augmentation --------------------------------------------
 transform = transforms.Compose([transforms.ToTensor(),  
@@ -67,7 +67,7 @@ transform = transforms.Compose([transforms.ToTensor(),
 
 Due to the characteristics of yoga posture, Random Vertical Flip was not used for data augmentation, but only Random Horizontal Flip was used.
 
-### Modify fully-connected layer
+### + Modify fully-connected layer
 ```
 # Transform the fully connected layer
 model.fc = nn.Sequential(nn.Linear(num_ftrs, 512), # attach trainable classifier
